@@ -1,0 +1,51 @@
+<h1>Contacts#new</h1>
+<p>Find me in app/views/contacts/new.html.erb</p>
+
+
+<%= form_with(model: @contact, local: true) do |form| %>    
+
+    <% if @contact.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
+            <ul>
+            <% @contact.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="contact_name">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+    <div class="contact_email">
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+    </div>
+    <div class="contact_content">
+        <%= form.label :content %>
+        <%= form.text_field :content%>
+    </div>
+    <%= form.submit %>
+
+<% end %>
+
+<p>--------------------------------------------------------------------------</p>
+<h2>投稿確認用</h2>
+<p>contact欄：140字以上バリデーション確認用（コピーしてお使いください）kvvefibvbnbfnivndfbajkvnsdifhvnsiugdiughiingvuhlvgsulvksdnlsvdhijlfbuigvheaiuvohubniejfnvijnavinvefgdnbvinivfadbnvdbijninbfvnsifebvneiabvdifbdibivbnaidfvsdfbghbenrjtkbvwnvifbg</p>
+<table>
+  <tr>
+    <th>投稿者氏名</th>
+    <th>メールアドレス</th>
+    <th>お問い合わせ内容</th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact.name %></td>
+    <td><%= contact.email %></td>
+    <td><%= contact.content %></td>
+  </tr>
+<% end %>
+</table>
